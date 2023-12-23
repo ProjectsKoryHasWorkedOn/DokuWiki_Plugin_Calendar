@@ -10,12 +10,12 @@ class action_plugin_ijsyouridea extends DokuWiki_Action_Plugin {
         $event->data['script'][] = array(
             'type'    => 'text/javascript',
             'charset' => 'utf-8',
-            'src'     => DOKU_BASE . 'lib/plugins/calendar_plugin/front/script.js',
+            'src'     => DOKU_BASE . 'lib/plugins/ijsyouridea/front/script.js',
         );
         $event->data['script'][] = array(
             'type'    => 'text/javascript',
             'charset' => 'utf-8',
-            'src'     => DOKU_BASE . 'lib/plugins/calendar_plugin/front/calendar/calendar.min.js',
+            'src'     => DOKU_BASE . 'lib/plugins/ijsyouridea/front/calendar/calendar.min.js',
         );
     }
 }
