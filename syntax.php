@@ -28,8 +28,16 @@ class syntax_plugin_ijsyouridea extends DokuWiki_Syntax_Plugin {
     function render($mode, Doku_Renderer $renderer, $data) {
         if ($mode == 'xhtml') {
             $renderer->doc .= '<div id="calendar"></div>';
-            $renderer->script('./front/script.js');
-            $renderer->script('./front/calendar/calendar.min.js');
+            $renderer->meta['script'][] = array(
+            'type'    => 'text/javascript',
+            'charset' => 'utf-8',
+            'src'     => DOKU_BASE . 'lib/plugins/ijsyouridea/front/script.js',
+        );
+            $renderer->meta['script'][] = array(
+            'type'    => 'text/javascript',
+            'charset' => 'utf-8',
+            'src'     => DOKU_BASE . 'lib/plugins/ijsyouridea/front/calendar/calendar.min.js',
+        );
             return true;
         }
         return false;
