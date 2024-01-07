@@ -1,0 +1,7 @@
+base   ijsyouridea
+author valerii
+email  zinchenkomac@icloud.com
+date   2023-12-02
+name   ijsyouridea plugin
+desc   testing ggrgtggggg
+url    https://www.dokuwiki.org/plugin:ijsyouridea
