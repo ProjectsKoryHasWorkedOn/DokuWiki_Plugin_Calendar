@@ -1,3 +1,5 @@
+/* DOKUWIKI:include_once js/calendar.min.js */
+
 console.log("Testing this out");
 
 var calendarInstance1 = new calendarJs( "calendar", {
