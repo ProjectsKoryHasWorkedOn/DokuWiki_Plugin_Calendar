@@ -65,6 +65,31 @@ class helper_plugin_ijsyouridea extends DokuWiki_Plugin {
     return $meta;
   }
 
+  //testing
+   public function getSomething()
+  {
+      // Some sane default settings
+      $data = array();
+     
+
+      $sqlite = $this->getDB();
+      if(!$sqlite)
+        return false;
+
+      $query = "SELECT * FROM Events";
+      $res = $sqlite->query($query);
+      $arr = $sqlite->res2arr($res);
+      foreach($arr as $row)
+      {
+          $data[$row['key']] = $row['value'];
+      }
+      return $data;
+  }
+
+  //testing end
+
+
+
   /**
    * Retrieve the meta data for a given page
    *

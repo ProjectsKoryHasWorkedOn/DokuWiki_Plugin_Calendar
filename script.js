@@ -7,6 +7,19 @@ var calendarInstance1 = new calendarJs( "calendar", {
     viewToOpenOnFirstLoad: 'full-week',
     onEventAdded: function( args ) {
         console.log( 'onEventAdded', args );
+        fetch( DOKU_BASE + 'lib/exe/ajax.php', {
+            method: 'POST',
+        }).then( response => response.json() )
+        .then( data => console.log( data ) );
+        // url: DOKU_BASE + 'lib/exe/ajax.php',
+        //                 type: 'POST',
+        //                 data: {
+        //                     call: 'plugin_davcal',
+        //                     action: 'getEvents',
+        //                     id: dw_davcal__modals.page,
+        //                     page: dw_davcal__modals.page,
+        //                     sectok: JSINFO.plugin.davcal['sectok']
+        //                 },
         //! connect to plugins php litesql API
     },
     onEventUpdated: function( args ) {
