@@ -1,14 +1,16 @@
+console.log('loading');
+
 function addScript( src, callback ) {
   var s = document.createElement( 'script' );
   s.setAttribute( 'src', src );
   s.onload=callback;
-  console.log(document.body, 'body')
+  console.log(document.body, 'body');
   document.body.appendChild( s );
 }
 
 try{
   // var BASE_URL = JSINFO.plugin.ijsyouridea['baseurl'];
-  addScript(`${BASE_URL}lib/plugins/ijsyouridea/js/calendar.js`, function(){
+  addScript(`${DOKU_BASE}lib/plugins/ijsyouridea/js/calendar.js`, function(){
     console.log('instance calendar.js started');
     var calendarInstance1 = new calendarJs( "calendar", {
       manualEditingEnabled: true,
