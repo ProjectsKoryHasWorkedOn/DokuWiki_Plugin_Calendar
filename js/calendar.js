@@ -1,8 +1,5 @@
-
-console.log("Testing this out");
-
-/*! Calendar.js v2.10.2 | (c) Bunoon | MIT License */
-
+/*! Calendar.js v2.10.4 | (c) Bunoon 2024 | MIT License */
+console.log( 'calendar.js loaded' );
 function calendarJs(elementOrId, options, searchOptions) {
   function build(newStartDateTime, fullRebuild, forceRefreshViews) {
     _calendar_CurrentDate = isDefinedDate(newStartDateTime) ? newStartDateTime : new Date();
@@ -673,10 +670,9 @@ function calendarJs(elementOrId, options, searchOptions) {
     _element_Mode_DatePicker_Input.readOnly = true;
     _element_Mode_DatePicker_Input.placeholder = _options.selectDatePlaceholderText;
     _element_Mode_DatePicker_Enabled = true;
-    var parent = element.parentNode;
-    parent.removeChild(element);
     var container = createElement("div", "calendar-date-picker");
-    parent.appendChild(container);
+    element.insertAdjacentElement("afterend", container);
+    element.remove(element);
     container.appendChild(_element_Mode_DatePicker_HiddenInput);
     container.appendChild(_element_Mode_DatePicker_Input);
     _element_Calendar = createElement("div", "calendar calendar-hidden");
@@ -5028,9 +5024,7 @@ function calendarJs(elementOrId, options, searchOptions) {
       _element_Dialog_Search_FocusedEventID = eventDetails.id;
       if (isFullDayViewVisible || isAllEventsViewVisible || isFullWeekViewVisible || isTimelineViewVisible) {
         var parent = event.parentNode;
-        var parentScrollHeight = 0;
         for (; true || !isDefined(parent);) {
-          parentScrollHeight = parent.scrollHeight;
           if (parent.scrollHeight > 0 && parent.scrollHeight > parent.offsetHeight) {
             parent.scrollTop = event.offsetTop;
             break;
@@ -7255,7 +7249,7 @@ function calendarJs(elementOrId, options, searchOptions) {
   function getStyleValueByName(element, stylePropertyName) {
     var value = null;
     if (_parameter_Window.getComputedStyle) {
-      value = document.defaultView.getComputedStyle(element, null).getPropertyValue(stylePropertyName);
+      value = _parameter_Document.defaultView.getComputedStyle(element, null).getPropertyValue(stylePropertyName);
     } else if (element.currentStyle) {
       value = element.currentStyle[stylePropertyName];
     }
@@ -9714,7 +9708,7 @@ function calendarJs(elementOrId, options, searchOptions) {
     return this;
   };
   this.getVersion = function() {
-    return "2.10.2";
+    return "2.10.3";
   };
   this.getId = function() {
     return _parameter_ElementID;
@@ -9811,65 +9805,3 @@ function calendarJs(elementOrId, options, searchOptions) {
     }
   })(document, window, navigator);
 };
-
-
-
-
-
-
-var calendarInstance1 = new calendarJs( "calendar", {
-    manualEditingEnabled: true,
-    viewToOpenOnFirstLoad: 'full-week',
-    onEventAdded: function( args ) {
-        console.log( 'onEventAdded', args );
-        fetch( DOKU_BASE + 'lib/exe/ajax.php', {
-            method: 'POST',
-        }).then( response => response.json() )
-        .then( data => console.log( data ) );
-        // url: DOKU_BASE + 'lib/exe/ajax.php',
-        //                 type: 'POST',
-        //                 data: {
-        //                     call: 'plugin_davcal',
-        //                     action: 'getEvents',
-        //                     id: dw_davcal__modals.page,
-        //                     page: dw_davcal__modals.page,
-        //                     sectok: JSINFO.plugin.davcal['sectok']
-        //                 },
-        //! connect to plugins php litesql API
-    },
-    onEventUpdated: function( args ) {
-        console.log( 'onEventUpdated', args );
-        //! connect to plugins php litesql API
-    },
-    onEventRemoved: function( args ) {
-        console.log( 'onEventRemoved', args );
-        //! connect to plugins php litesql API
-    },
-    //!every time you open calender you should take events from 
-    //!memory and put them in the calendar
-    events:[{
-        "from": "2023-12-03T23:00:00.000Z",
-        "to": "2023-12-03T23:30:00.000Z",
-        "title": "new Event2",
-        "description": "",
-        "location": "",
-        "group": "",
-        "isAllDay": false,
-        "showAlerts": true,
-        "showAsBusy": true,
-        "repeatEnds": null,
-        "url": "",
-        "repeatEveryCustomValue": 1,
-        "type": 0,
-        "alertOffset": 0,
-        "repeatEvery": 2,
-        "repeatEveryCustomType": 0,
-        "organizerName": "",
-        "organizerEmailAddress": "",
-        "id": "96b8f433-a407-fc64-998a-04ed48f30c80",
-        "created": "2023-12-08T13:54:29.538Z",
-        "lastUpdated": "2023-12-08T13:54:29.538Z"
-    }]
-  } );
-  
- 
